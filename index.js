@@ -36,20 +36,13 @@ app.use('/api/quan-ly', bookRoute);
 const path = require("path");
 const basePath = '';
 
-//cấu hình chạy reactjs trên node server
-app.use(basePath + "/", express.static(path.resolve(__dirname + "/build")));
-
-app.get("*", (request, response) => {
-  response.sendFile(path.resolve(__dirname + "/build/index.html"));
-});
-//
 
 app.listen(port, () => {
     console.log('server running ', port)
 });
 
 mongoose.set('strictQuery', false);
-mongoose.connect(process.env.URL_MONGODB,{
+mongoose.connect("mongodb+srv://vuvantinh:vuvantinh1@cluster0.owol5t7.mongodb.net/?retryWrites=true&w=majority",{
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, (err) => {
